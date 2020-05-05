@@ -1,5 +1,5 @@
 Erstellt von Simon Schachenhofer  
-Version: 1.0 (5.5.2020)  
+Version: 1.1 (6.5.2020)  
 Keine Garantie für Vollständigkeit und Richtigkeit
 
 
