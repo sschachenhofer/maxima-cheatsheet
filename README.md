@@ -1,5 +1,5 @@
 Erstellt von Simon Schachenhofer  
-Version: 1.0 (4.5.2020)  
+Version: 1.0 (5.5.2020)  
 Keine Garantie für Vollständigkeit und Richtigkeit
 
 
@@ -16,7 +16,7 @@ Entfernt die Wertzuweisungen von Variablen („löscht die Variablen“).
 
 `kill(a)`
 
-- *a*: Die Variable die gelöscht werden soll
+- *a*: Die Variable die gelöscht werden soll.
 
 `kill(all)`
 
@@ -36,7 +36,7 @@ Lädt ein Maxima-Package nach, das nicht standardmäßig geladen wird. Das Packa
 
 `load(package)`
 
-- *package*: Das Package, das geladen werden soll
+- *package*: Das Package, das geladen werden soll.
 
 ##### Beispiel
 
@@ -68,15 +68,15 @@ Alternativ kann man an einen Befehl auch einfach `, numer` anhängen.
 
 #### `sqrt()` – Quadratwurzel
 
-Berechnet die Quadratwurzel ²&radic; einer Zahl oder einer Variablen.
+Berechnet die Quadratwurzel (<sup>2</sup>&radic;) einer Zahl oder einer Variablen.
 
-Für alle anderen Wurzeln gibt es **keine** eigene Maxima-Funktion. Hier muss man stattdessen über die Potenzschreibweise rechnen. Die dritte Wurzel (³&radic;) von 8 kann man zum Beispiel mit `8^(1/3)` berechnen.
+Für alle anderen Wurzeln gibt es **keine** eigene Maxima-Funktion. Hier muss man stattdessen über die Potenzschreibweise rechnen. Die dritte Wurzel (<sup>3</sup>&radic;) von 8 kann man zum Beispiel mit `8^(1/3)` berechnen.
 
 ##### Parameter
 
 `sqrt(a)`
 
-- *a*: Die Zahl oder Variable, von der die Quadratwurzel berechnet werden soll
+- *a*: Die Zahl oder Variable, von der die Quadratwurzel berechnet werden soll.
 
 ##### Beispiel
 
@@ -173,7 +173,7 @@ Wenn man ein `'` davorsetzt, werden keine Zahlenwerte berechnet, sondern es wird
 ##### Beispiel
 
 Hier soll die Summe aller Zweierpotenzen mit den Exponenten von 0 bis 10 berechnet werden – also  
-2^0^ + 2^1^ + 2^2^ + 2^3^ + 2^4^ + 2^5^ + 2^6^ + 2^7^ + 2^8^ + 2^9^ + 2^10^
+2<sup>0</sup> + 2<sup>1</sup> + 2<sup>2</sup> + 2<sup>3</sup> + 2<sup>4</sup> + 2<sup>5</sup> + 2<sup>6</sup> + 2<sup>7</sup> + 2<sup>8</sup> + 2<sup>9</sup> + 2<sup>10</sup>
 
 ![image-20200504113807002](img/sum.png)
 
@@ -316,8 +316,8 @@ Hier sieht man das Einsetzen von einem einzelnen Wert in *f* und das Einsetzen v
 
 `solve()` hat hauptsächlich zwei Aufgaben
 
-- Umformen einer Gleichung auf eine bestimmte Variable
-- Berechnen der Werte für eine oder mehrere Variablen (aus einer Gleichung oder einem Gleichungssystem)
+- Umformen einer Gleichung auf eine bestimmte Variable.
+- Berechnen der Werte für eine oder mehrere Variablen (aus einer Gleichung oder einem Gleichungssystem).
 
 ##### Umformen einer Gleichung auf eine bestimmte Variable
 
@@ -339,7 +339,7 @@ Um ein Gleichungssystem zu lösen und die Werte für die Variablen herauszufinde
 - *gleichungssystem*: Eine Liste mit Gleichungen, die die Variablen enthalten.
 - *variablen*: Eine Liste mit Variablen, die in den Gleichungen enthalten sind. Es werden dann die Werte für diese Variablen berechnet.
 
-Beispiel
+Beispiel:
 
 ![image-20200504143408388](img/solve2.png)
 
@@ -382,7 +382,7 @@ siehe auch: `newton()`
 
 #### `allroots()` und `realroots()` – Finden von allen Nullstellen
 
-Mit diesen Funktionen lassen sich die Nullstellen einer Polynomfunktion berechnen (also alle Werte der Variable, für die der Term 0 ergibt). Nach dem *Fundamentalsatz der Algebra* hat ein Polynom n-ten Grades immer genau n Nullstellen. Nullstellen können aber gleich sein oder in den komplexen Zahlen liegen.
+Mit diesen Funktionen lassen sich die Nullstellen einer Polynomfunktion berechnen (also alle Werte der Variable, für die der Term 0 ergibt). Nach dem *Fundamentalsatz der Algebra* hat ein Polynom n-ten Grades immer genau n Nullstellen. Es können aber mehrere Nullstellen gleich sein, oder Nullstellen in den komplexen Zahlen liegen.
 
 - `allroots()` gibt alle Nullstellen zurück
 - `realroots()` gibt nur die reellen Nullstellen zurück
@@ -466,9 +466,9 @@ Um beim Aufstellen einer Differenzialgleichung die angeschriebene Ableitung zu b
 
 Standardform: `diff(term, variable, n)`
 
-- *term*: Der Term, der abgeleitet werden soll
-- *variable*: Die Variable, die abgeleitet werden soll
-- *n*: Gibt an, die wievielte Ableitung gebildet werden soll (optional)
+- *term*: Der Term, der abgeleitet werden soll.
+- *variable*: Die Variable, nach der abgeleitet werden soll.
+- *n*: Gibt an, die wievielte Ableitung gebildet werden soll (optional).
 
 Es gibt aber auch noch andere Möglichkeiten, die Funktion aufzurufen.
 
@@ -492,12 +492,10 @@ Integriert einen Term – bestimmt oder unbestimmt.
 
 **Achtung**: Beim unbestimmten Integral gibt Maxima die Integrationskonstante **nicht** aus – sie gehört aber trotzdem zum Ergebnis dazu!
 
-Parameter:
-
 `integrate(term, variable)`
 
-- *term*: Der Term, der integriert werden soll
-- *variable*: Die Variable, nach der integriert werden soll
+- *term*: Der Term, der integriert werden soll.
+- *variable*: Die Variable, nach der integriert werden soll.
 
 Hier gibt es im Gegensatz zu `diff()` **kein** Parameter, um mehrere Stufen auf einmal zu integrieren!
 
@@ -509,13 +507,11 @@ Beispiel:
 
 Beim bestimmten Integral kann es sein, dass `integrate()` kein sinnvolles Ergebnis liefert. Dann muss man stattdessen eine numerische Integrationsmethode wie `romberg()` verwenden.
 
-Parameter:
-
 `integrate(term, variable, a, b)`
 
-- *term*: Der Term, der integriert werden soll
-- *variable*: Die Variable, nach der integriert werden soll
-- *a* und *b*: Die beiden Grenzen des Integrationsintervalls
+- *term*: Der Term, der integriert werden soll.
+- *variable*: Die Variable, nach der integriert werden soll.
+- *a* und *b*: Die beiden Grenzen des Integrationsintervalls.
 
 Beispiel:
 
@@ -535,9 +531,9 @@ Die Parameter sind gleich wie bei `integrate`:
 
 `romberg(term, variable, a, b)`
 
-- *term*: Der Term, der integriert werden soll
-- *variable*: Die Variable, nach der integriert werden soll
-- *a* und *b*: Die beiden Grenzen des Integrationsintervalls
+- *term*: Der Term, der integriert werden soll.
+- *variable*: Die Variable, nach der integriert werden soll.
+- *a* und *b*: Die beiden Grenzen des Integrationsintervalls.
 
 ##### Beispiel
 
@@ -560,8 +556,8 @@ Um die Integrationskonstante zu berechnen (und damit von der allgemeinen Lösung
 `ode2(dgl, avar, uvar)`
 
 - *dgl*: Die Differenzialgleichung, deren Ergebnis berechnet werden soll.
-- *avar*: Die *abhängige Variable* (also der Name der Funktion, die man erhalten möchte) – zum Beispiel y
-- *uvar*: Die *unabhängige Variable* (also das Argument der Funktion) – zum Beispiel x
+- *avar*: Die *abhängige Variable* (also der Name der Funktion, die man erhalten möchte) – zum Beispiel y.
+- *uvar*: Die *unabhängige Variable* (also das Argument der Funktion) – zum Beispiel x.
 
 ##### Beispiel
 
@@ -577,9 +573,9 @@ Berechnet die Integrationskonstante (`%c`), um von der allgemeinen Lösung einer
 
 `ic1(loesung, uwert, awert)`
 
-- *loesung*: Die allgemeine Lösung (hier kann einfach das genommen werden, was bei `ode2` herauskommt)
-- *uwert*: Wert der unabhängigen Variablen in der Anfangs-/Randbedingung, in Form einer Gleichung (z.B. `x = 0`)
-- *awert*: Wert der abhängigen Variablen in der Anfangs-/Randbedingung, in Form einer Gleichung (z.B. `y = 23.5`)
+- *loesung*: Die allgemeine Lösung (hier kann einfach das genommen werden, was bei `ode2` herauskommt).
+- *uwert*: Wert der unabhängigen Variablen in der Anfangs-/Randbedingung, in Form einer Gleichung (z.B. `x = 0`).
+- *awert*: Wert der abhängigen Variablen in der Anfangs-/Randbedingung, in Form einer Gleichung (z.B. `y = 23.5`).
 
 ##### Beispiel
 
@@ -599,8 +595,8 @@ Berechnet den Wert des Binomialkoeffizienten („n über k“).
 
 `binomial(n, k)`
 
-- *n*: n – die Größe der Grundmenge
-- *k*: k – Die Anzahl an Elementen, die ausgewählt werden sollen
+- *n*: Die Größe der Grundmenge
+- *k*: Die Anzahl an Elementen, die aus der Grundmenge ausgewählt werden soll
 
 ##### Beispiel
 
@@ -615,9 +611,9 @@ In Maxima gibt es Funktionen für viele verschiedene Verteilungen, die nach eine
 Die für uns wichtigsten Verteilungen sind:
 
 - `..._binomial`: Die Binomialverteilung
-- `..._hypergeometric`: Die hypergeometrische Verteilung
 - `..._normal`: Die Normalverteilung
-- `..._poisson`: Die Poisson-Verteilung
+- `..._hypergeometric`: Die hypergeometrische Verteilung (nicht Maturastoff)
+- `..._poisson`: Die Poisson-Verteilung (nicht Maturastoff)
 
 Die Parameter der Funktionen sind von der Verteilung abhängig!
 
