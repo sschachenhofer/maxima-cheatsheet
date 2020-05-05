@@ -24,7 +24,7 @@ Entfernt die Wertzuweisungen von Variablen („löscht die Variablen“).
 
 ##### Beispiel
 
-![image-20200504111635643](img\kill.png)
+![image-20200504111635643](img/kill.png)
 
 
 
@@ -40,7 +40,7 @@ Lädt ein Maxima-Package nach, das nicht standardmäßig geladen wird. Das Packa
 
 ##### Beispiel
 
-![image-20200504111728441](img\load.png)
+![image-20200504111728441](img/load.png)
 
 
 
@@ -60,7 +60,7 @@ Alternativ kann man an einen Befehl auch einfach `, numer` anhängen.
 
 ##### Beispiel
 
-![image-20200504110645452](img\float.png)
+![image-20200504110645452](img/float.png)
 
 
 
@@ -80,7 +80,7 @@ Für alle anderen Wurzeln gibt es **keine** eigene Maxima-Funktion. Hier muss ma
 
 ##### Beispiel
 
-![sqrt](img\sqrt.png)
+![sqrt](img/sqrt.png)
 
 
 
@@ -98,7 +98,7 @@ Alternativ kann man statt `exp(...)` auch einfach `%e^(...)` schreiben.
 
 ##### Beispiel
 
-![image-20200504112203530](img\exp.png)
+![image-20200504112203530](img/exp.png)
 
 
 
@@ -117,7 +117,7 @@ Für alle anderen Logarithmen gibt es **keine** eigene Maxima-Funktion. Um einen
 
 ##### Beispiel
 
-![image-20200504112242089](img\log.png)
+![image-20200504112242089](img/log.png)
 
 
 
@@ -135,7 +135,7 @@ Zum Berechnen des Betrags eines Vektors (also der Länge eines Vektors) kann die
 
 ##### Beispiel
 
-![image-20200504112455032](img\abs.png)
+![image-20200504112455032](img/abs.png)
 
 
 
@@ -152,7 +152,7 @@ Berechnet den ganzzahligen Rest (in Programmiersprachen wie Java geschrieben als
 
 ##### Beispiel
 
-![image-20200504112637974](img\mod.png)
+![image-20200504112637974](img/mod.png)
 
 
 
@@ -175,7 +175,7 @@ Wenn man ein `'` davorsetzt, werden keine Zahlenwerte berechnet, sondern es wird
 Hier soll die Summe aller Zweierpotenzen mit den Exponenten von 0 bis 10 berechnet werden – also  
 2^0^ + 2^1^ + 2^2^ + 2^3^ + 2^4^ + 2^5^ + 2^6^ + 2^7^ + 2^8^ + 2^9^ + 2^10^
 
-![image-20200504113807002](img\sum.png)
+![image-20200504113807002](img/sum.png)
 
 
 
@@ -201,7 +201,7 @@ Berechnet den Sinus eines Winkels.
 
 ##### Beispiel
 
-![image-20200504114410846](img\sin.png)
+![image-20200504114410846](img/sin.png)
 
 
 
@@ -217,7 +217,7 @@ Berechnet den Cosinus eines Winkels.
 
 ##### Beispiel
 
-![image-20200504114523021](img\cos.png)
+![image-20200504114523021](img/cos.png)
 
 
 
@@ -233,7 +233,7 @@ Berechnet den Tangens eines Winkels.
 
 ##### Beispiel
 
-![image-20200504114629262](img\tan.png)
+![image-20200504114629262](img/tan.png)
 
 
 
@@ -249,7 +249,7 @@ Berechnet aus einem Sinuswert den dazugehörigen Winkel in Radiant.
 
 ##### Beispiel
 
-![image-20200504114848208](img\asin.png)
+![image-20200504114848208](img/asin.png)
 
 
 
@@ -265,7 +265,7 @@ Berechnet aus einem Cosinuswert den dazugehörigen Winkel in Radiant.
 
 ##### Beispiel
 
-![image-20200504114959309](img\acos.png)
+![image-20200504114959309](img/acos.png)
 
 
 
@@ -281,7 +281,7 @@ Berechnet aus einem Tangenswert den dazugehörigen Winkel in Radiant.
 
 ##### Beispiel
 
-![image-20200504115100187](img\atan.png)
+![image-20200504115100187](img/atan.png)
 
 
 
@@ -308,7 +308,7 @@ Wenn man für mathematische Funktionen in Maxima Terme verwendet, dann entsprich
 
 Hier sieht man das Einsetzen von einem einzelnen Wert in *f* und das Einsetzen von mehreren Werten in *g*.
 
-![image-20200504115538131](img\subst.png)
+![image-20200504115538131](img/subst.png)
 
 
 
@@ -328,7 +328,7 @@ Hier sieht man das Einsetzen von einem einzelnen Wert in *f* und das Einsetzen v
 
 Beispiel:
 
-![image-20200504142938805](img\solve1.png)
+![image-20200504142938805](img/solve1.png)
 
 ##### Lösen eines Gleichungssystems
 
@@ -341,7 +341,7 @@ Um ein Gleichungssystem zu lösen und die Werte für die Variablen herauszufinde
 
 Beispiel
 
-![image-20200504143408388](img\solve2.png)
+![image-20200504143408388](img/solve2.png)
 
 
 
@@ -362,13 +362,13 @@ Es macht Sinn, `newton()` zu verwenden, wenn `solve()` kein (oder kein sinnvolle
 
 ##### Beispiel: Finden von Nullstellen
 
-![image-20200504145001598](img\newton1.png)
+![image-20200504145001598](img/newton1.png)
 
 ##### Beispiel: Lösen einer Gleichung
 
 Hier wurde die Gleichung *m = 7257* nach *d* gelöst.
 
-![image-20200504151403756](img\newton2.png)
+![image-20200504151403756](img/newton2.png)
 
 
 
@@ -396,7 +396,7 @@ Mit diesen Funktionen lassen sich die Nullstellen einer Polynomfunktion berechne
 
 ##### Beispiel
 
-![image-20200504153549669](img\allroots_realroots.png)
+![image-20200504153549669](img/allroots_realroots.png)
 
 
 
@@ -414,7 +414,7 @@ Zerlegt einen Term in mehrere Faktoren (zum Beispiel durch Herausheben).
 
 ##### Beispiel
 
-![image-20200504143542699](img\factor.png)
+![image-20200504143542699](img/factor.png)
 
 
 
@@ -430,7 +430,7 @@ Multipliziert einen Term aus mehreren Faktoren aus. Das ist die Umkehrfunktion z
 
 ##### Beispiel
 
-![image-20200504153922124](img\expand.png)
+![image-20200504153922124](img/expand.png)
 
 
 
@@ -450,7 +450,7 @@ Mit diesen beiden Funktionen kann man auf die einzelnen Terme auf den beiden Sei
 
 ##### Beispiel
 
-![image-20200504154539439](img\rhs.png)
+![image-20200504154539439](img/rhs.png)
 
 
 
@@ -476,11 +476,11 @@ Es gibt aber auch noch andere Möglichkeiten, die Funktion aufzurufen.
 
 Ableiten eines Terms:
 
-![image-20200505171018514](img\diff.png)
+![image-20200505171018514](img/diff.png)
 
 `'diff(...)` für das Bilden einer Differenzialgleichung:
 
-![image-20200505172146348](img\diff2.png)
+![image-20200505172146348](img/diff2.png)
 
 
 
@@ -503,7 +503,7 @@ Hier gibt es im Gegensatz zu `diff()` **kein** Parameter, um mehrere Stufen auf 
 
 Beispiel:
 
-![image-20200505173007040](img\integrate.png)
+![image-20200505173007040](img/integrate.png)
 
 ##### Bestimmtes Integral
 
@@ -519,7 +519,7 @@ Parameter:
 
 Beispiel:
 
-![image-20200505172906143](img\integrate2.png)
+![image-20200505172906143](img/integrate2.png)
 
 
 
@@ -543,7 +543,7 @@ Die Parameter sind gleich wie bei `integrate`:
 
 Hier wurde versucht, eine Bogenlänge zu berechnen. `integrate()` hatte kein numerisches Ergebnis, deshalb wurde `romberg()` verwendet.
 
-![image-20200505173457904](img\romberg.png)
+![image-20200505173457904](img/romberg.png)
 
 
 
@@ -565,7 +565,7 @@ Um die Integrationskonstante zu berechnen (und damit von der allgemeinen Lösung
 
 ##### Beispiel
 
-![image-20200505174532434](img\ode2.png)
+![image-20200505174532434](img/ode2.png)
 
 
 
@@ -583,7 +583,7 @@ Berechnet die Integrationskonstante (`%c`), um von der allgemeinen Lösung einer
 
 ##### Beispiel
 
-![image-20200505180510146](img\ic1.png)
+![image-20200505180510146](img/ic1.png)
 
 
 
@@ -604,7 +604,7 @@ Berechnet den Wert des Binomialkoeffizienten („n über k“).
 
 ##### Beispiel
 
-![image-20200505181151608](img\binomial.png)
+![image-20200505181151608](img/binomial.png)
 
 
 
