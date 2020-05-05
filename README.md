@@ -94,7 +94,7 @@ Alternativ kann man statt `exp(...)` auch einfach `%e^(...)` schreiben.
 
 `exp(a)`
 
-- *a*: Die Zahl oder Variable, von der die Potenz e^a^ berechnet werden soll.
+- *a*: Die Zahl oder Variable, von der die Potenz e<sup>a</sup> berechnet werden soll.
 
 ##### Beispiel
 
@@ -625,71 +625,195 @@ Im folgenden werden die Parameter für die verschiedenen Verteilungen erklärt. 
 
 #### `..._binomial` – Binomialverteilung
 
+Die Binomialverteilung wird verwendet, wenn bei jeder Durchführung des Zufallsexperiments die **selbe Wahrscheinlichkeit** gilt – also zum Beispiel beim „Ziehen mit Zurücklegen“.
+
 ##### Parameter
 
 `pdf_binomial(x, n, p)`
 
-- *x*: (auch *k*): Anzahl, wie oft der gewünschte Fall eintreten soll
-- *n*: Anzahl, wie oft das Zufallsexperiment durchgeführt wird
-- *p*: Wahrscheinlichkeit für ein Experiment, dass der gewünschte Fall eintritt (muss als Dezimalzahl angegeben werden: 32 % = 0.32)
+- *x*: (auch *k*): Anzahl, wie oft der gewünschte Fall eintreten soll.
+- *n*: Anzahl, wie oft das Zufallsexperiment durchgeführt wird.
+- *p*: Wahrscheinlichkeit für ein Experiment, dass der gewünschte Fall eintritt (muss als Dezimalzahl angegeben werden: 32 % = 0.32).
+
+
 
 
 
 #### `..._hypergeometric` – Hypergeometrische Verteilung
 
+Die hypergeometrische Verteilung wird für „Ziehen **ohne** Zurücklegen“ verwendet – also dann, wenn sich die Wahrscheinlichkeiten bei jeder Durchführung des Zufallsversuchs ändern.
+
 ##### Parameter
 
-`pdf_hypergeometric(x, D, )`
+`pdf_hypergeometric(x, n1, n2, n)`
 
-- *x*: Anzahl an Merkmalsträgern, die in der Stichprobe enthalten sein sollen
-- *n1*: Anzahl an Merkmalsträgern in der Grundgesamtheit
-- *n2*: Anzahl an Nicht-Merkmalsträgern in der Grundgesamtheit
-- *n*: Größe der Stichprobe (Anzahl an Elementen, die aus der Grundgesamtheit gezogen werden)
+- *x*: Anzahl an Merkmalsträgern, die in der Stichprobe enthalten sein sollen.
+- *n1*: Anzahl an Merkmalsträgern in der Grundgesamtheit.
+- *n2*: Anzahl an Nicht-Merkmalsträgern in der Grundgesamtheit.
+- *n*: Größe der Stichprobe (Anzahl an Elementen, die aus der Grundgesamtheit gezogen werden).
 
 **Achtung**: Die Parameter sind hier **anders** als bei der hypergeometrischen Verteilung üblich! Normalerweise benutzt man die folgenden vier Parameter:
 
-- *N*: Größe der Grundgesamtheit (Anzahl an Elementen insgesamt)
-- *n*: Größe der Stichprobe (Anzahl an Elementen, die aus der Grundgesamtheit gezogen werden)
-- *D*: Anzahl der Merkmalsträger in der Grundgesamtheit
-- *x*: Anzahl der Merkmalsträger, die in der Stichprobe enthalten sein sollen
+- *N*: Größe der Grundgesamtheit (Anzahl an Elementen insgesamt).
+- *n*: Größe der Stichprobe (Anzahl an Elementen, die aus der Grundgesamtheit gezogen werden).
+- *D*: Anzahl der Merkmalsträger in der Grundgesamtheit.
+- *x*: Anzahl der Merkmalsträger, die in der Stichprobe enthalten sein sollen.
 
 So kommt man davon auf die Parameter für die Maxima-Funktion:
 
-- *x* und *n* können übernommen werden
-- *n1* entspricht *D*
-- *n2* ist *N* - *D*
+- *x* und *n* können übernommen werden.
+- *n1* entspricht *D*.
+- *n2* ist *N* - *D.*
+
+
+
+#### `..._poisson` – Poisson-Verteilung
+
+Die Poisson-Verteilung kommt nur selten vor. Man verwendet sie beim Berechnen von „Ereignissen pro Zählabschnitt“ – also zum Beispiel:
+
+- Autounfälle pro Tag
+- Fehlerhafte Netzwerkpakete pro Stunde
+- Anzahl zerbrochener Kekse pro 10.000 Kekse
+- Sternschnuppen pro Stunde
+
+##### Parameter
+
+`pdf_poisson(x, m)`
+
+- *x*: Die Anzahl an Ereignissen, für die die Wahrscheinlichkeit berechnet werden soll.
+- *m*: Der Erwartungswert (&mu;) – also die Anzahl an Ereignissen, die normalerweise pro Zählabschnitt auftreten.
+
+**Achtung**: *x* und *m* müssen sich auf den gleichen Zählabschnitt beziehen (also z.B. beides auf eine Stunde).
+
+
+
+#### `..._normal` – Normalverteilung
+
+##### Parameter
+
+`pdf_normal(x, m, s)`
+
+- *x*: Der Wert, für den die Wahrscheinlichkeit ausgerechnet werden soll.
+- *m*: Der Erwartungswert (Mittelwert) der Normalverteilung (&mu;).
+- *s*: Die Standardabweichung der Normalverteilung (&sigma;).
 
 
 
 #### `pdf_...()` – Wahrscheinlichkeits- bzw. Dichtefunktion
 
+Die Maxima-Funktionen mit `pdf_...` am Anfang stehen für die *Wahrscheinlichkeitsfunktion* bzw. bei der Normalverteilung für die *Dichtefunktion*. Das bedeutet: Das Ergebnis ist die Wahrscheinlichkeit für **genau diesen Fall**.
 
+- Bei der **Binomialverteilung**: Die Wahrscheinlichkeit, dass das Ereignis **genau x Mal** eintritt.
+- Bei der **hypergeometrischen Verteilung**: Die Wahrscheinlichkeit, dass **genau x Merkmalsträger** in der Stichprobe enthalten sind.
+- Bei der **Poission-Verteilung**: Die Wahrscheinlichkeit, dass das Ereignis in einem Zählabschnitt **genau x Mal auftritt**.
+
+- Die **Normalverteilung** ist keine *diskrete*, sondern eine *kontinuierliche Verteilung*. Deswegen hat es **keinen Sinn**, Werte in die Dichtefunktion einzusetzen, um die Wahrscheinlichkeit für *genau diesen Wert* zu erhalten. Stattdessen benutzt man die Verteilungsfunktion.
+
+  Die Dichtefunktion der Normalverteilung kann aber natürlich verwendet werden, um den Graphen – die Glockenkurve – zu zeichnen.
 
 
 
 #### `cdf()_...()` – Verteilungsfunktion
 
+Die Maxima-Funktionen mit `cdf_...` am Anfang stehen für die *Verteilungsfunktionen*. Das Ergebnis ist die Wahrscheinlichkeit für „bis zu diesem Fall“. Das bedeutet für die verschiedenen Verteilungen folgendes:
+
+- Bei der **Binomialverteilung**: Die Wahrscheinlichkeit, dass das Ereignis **bis zu x Mal** eintritt.
+- Bei der **hypergeometrischen Verteilung**: Die Wahrscheinlichkeit, dass **bis zu x Merkmalsträger** in der Stichprobe enthalten sind.
+- Bei der **Poisson-Verteilung**: Die Wahrscheinlichkeit, dass das Ereignis in einem Zählabschnitt **bis zu x Mal** eintritt.
+- Bei der **Normalverteilung**: Die Wahrscheinlichkeit, dass der Zufallswert **kleiner oder gleich x** ist.
+
 
 
 #### `quantile_...()` – Berechnen eines Quantils
+
+Neben `pdf_...()` und `cdf_...()` bietet Maxima noch die Funktionen mit `quantile_...()` an (und natürlich noch viel mehr Funktionen, die wir wahrscheinlich nie brauchen werden). Die `quantile_...()`-Funktion ist jeweils die Umkehrfunktion der entsprechenden Verteilungsfunktion.
+
+Mit dieser Funktion kann man die Zahl berechnen, für die gilt, dass ein gewisser Anteil der Zufallswerte *unter oder gleich* der Zahl sind. Das bedeutet:
+
+- Bei der **Binomialverteilung**: Ein gewisser Anteil der Zufallswerte ist kleiner oder gleich der errechneten Anzahl an eingetretenen Ereignissen.
+- Bei der **hypergeometrischen Verteilung**: Ein gewisser Anteil der Zufallswerte ist kleiner oder gleich der errechneten Anzahl an Merkmalsträgern in der Stichprobe.
+- Bei der **Poisson-Verteilung**: Ein gewisser Anteil der Zufallswerte ist kleiner oder gleich der errechneten Anzahl an Ereignissen in einem Zählabschnitt.
+- Bei der **Normalverteilung**: Ein gewisser Anteil der Zufallswerte ist kleiner oder gleich dem errechneten Wert.
+
+##### Parameter
+
+`quantile_...(q, ...)`
+
+Der erste Parameter heißt hier nicht *x*, sondern *q*. Alle anderen Parameter sind gleich wie bei `pdf_...()` und `cdf_...()`.
+
+- *q* ist eine Prozentzahl (als Dezimalzahl, also eine Zahl von 0 bis 1), die beschreibt, welches Quantil gesucht werden soll.
+
+  Bei einem Quantil `q` von 0,9 (also 90 %) liegen 90 % der Zufallswerte unter dem errechneten Wert.
 
 
 
 ## Statistik
 
+Für die folgenden Funktionen muss zuerst das Package `descriptive` mit dem Befehl `load(descriptive);` geladen werden.
+
+
+
 #### `mean()` – Arithmetischer Mittelwert
+
+Berechnet den arithmetischen Mittelwert (&mu;) von Werten in einer Liste.
+
+##### Parameter
+
+`mean(liste)`
+
+- *liste*: Eine Liste an Werten, deren Mittelwert man berechnen möchte.
+
+##### Beispiel
+
+![image-20200505220025683](img/mean.png)
 
 
 
 #### `median()` – Median
 
+Berechnet den Median von Werten in einer Liste.
+
+##### Parameter
+
+`median(liste)`
+
+- *liste*: Eine Liste mit Werten, deren Median man berechnen möchte. Die Werte in der Liste müssen nicht geordnet sein.
+
+##### Beispiel
+
+![image-20200505220209448](img/median.png)
+
 
 
 #### `std()` – Standardabweichung &sigma;
 
+Berechnet die Standardabweichung (&sigma;) von Werten in einer Liste. Die Standardabweichung ist die Wurzel aus der Varianz.
+
+##### Parameter
+
+`std(liste)`
+
+- *liste*: Eine Liste an Werten, deren Standardabweichung man berechnen möchte.
+
+##### Beispiel
+
+![image-20200505220434392](img/std.png)
 
 
-#### `var()` – Varianz &sigma;²
+
+#### `var()` – Varianz &sigma;<sup>2</sup>
+
+Berechnet die Varianz (&sigma;<sup>2</sup>) von Werten in einer Liste. Die Varianz ist das Quadrat der Standardabweichung.
+
+##### Parameter
+
+`var(liste)`
+
+- *liste*: Eine Liste an Werten, deren Varianz man berechnen möchte.
+
+##### Beispiel
+
+![image-20200505220612489](img/var.png)
 
 
 
