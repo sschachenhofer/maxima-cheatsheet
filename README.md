@@ -106,7 +106,7 @@ Alternativ kann man statt `exp(...)` auch einfach `%e^(...)` schreiben.
 
 Berechnet den natürlichen Logarithmus (den Logarithmus mit der Basis *e*, der Eulerschen Zahl).
 
-Für alle anderen Logarithmen gibt es **keine** eigene Maxima-Funktion. Um einen Logarithmus log~a~ mit der Basis a zu berechnen, kann man sich aushelfen, indem man eine eigene Funktion definiert:  
+Für alle anderen Logarithmen gibt es **keine** eigene Maxima-Funktion. Um einen Logarithmus log<sub>a</sub> mit der Basis a zu berechnen, kann man sich aushelfen, indem man eine eigene Funktion definiert:  
 `log_a(x) := log(x)/log(a)`
 
 ##### Parameter
@@ -301,7 +301,7 @@ Wenn man für mathematische Funktionen in Maxima Terme verwendet, dann entsprich
 
 `subst(werte, term)` (es gibt aber auch andere mögliche Formen)
 
-- *werte*: Der Wert oder die Werte, die in den Term eingesetzt werden sollen. Das kann entweder eine Gleichung (zum Einsetzen von einem Wert) oder eine Liste (zum Einsetzen von mehreren Werten) sein. Auf jeden Fall wird im Term die linke Seite der Gleichung gesucht und durch die rechte Seite der Gleichung ersetzt.
+- *werte*: Der Wert oder die Werte, die in den Term eingesetzt werden sollen. Das kann entweder eine Gleichung (zum Einsetzen von einem Wert) oder eine Liste von Gleichungen (zum Einsetzen von mehreren Werten) sein. Auf jeden Fall wird im *term* die jeweils linke Seite der Gleichung gesucht und durch die rechte Seite der Gleichung ersetzt.
 - *term*: Der Term, in den eingesetzt werden soll.
 
 ##### Beispiel
@@ -366,13 +366,11 @@ Es macht Sinn, `newton()` zu verwenden, wenn `solve()` kein (oder kein sinnvolle
 
 ##### Beispiel: Lösen einer Gleichung
 
-Hier wurde die Gleichung *m = 7257* nach *d* gelöst.
+Um eine Gleichung mit `newton()` zu lesen, muss man sie so umformen, dass auf einer Seite der Gleichung 0 steht, und dann die andere Seite an `newton()` übergeben.
+
+Hier soll die Gleichung *m = 7257* nach *d* gelöst werden. *m = 7257* kann umgeformt werden auf *m - 7257 = 0*. Dann übergibt man die linke Seite dieser Gleichung an `newton()`:
 
 ![image-20200504151403756](img/newton2.png)
-
-
-
-#### (`ratsimp()`)
 
 
 
@@ -579,6 +577,8 @@ Berechnet die Integrationskonstante (`%c`), um von der allgemeinen Lösung einer
 
 ##### Beispiel
 
+Die Anfangsbedingung ist hier durch den Punkt *(0|2)* gegeben. Daraus ergeben sich die Gleichungen *x=0* und *y=2*.
+
 ![image-20200505180510146](img/ic1.png)
 
 
@@ -707,7 +707,7 @@ Die Maxima-Funktionen mit `pdf_...` am Anfang stehen für die *Wahrscheinlichkei
 - Bei der **hypergeometrischen Verteilung**: Die Wahrscheinlichkeit, dass **genau x Merkmalsträger** in der Stichprobe enthalten sind.
 - Bei der **Poission-Verteilung**: Die Wahrscheinlichkeit, dass das Ereignis in einem Zählabschnitt **genau x Mal auftritt**.
 
-- Die **Normalverteilung** ist keine *diskrete*, sondern eine *kontinuierliche Verteilung*. Deswegen hat es **keinen Sinn**, Werte in die Dichtefunktion einzusetzen, um die Wahrscheinlichkeit für *genau diesen Wert* zu erhalten. Stattdessen benutzt man die Verteilungsfunktion.
+- Die **Normalverteilung** ist keine *diskrete*, sondern eine *kontinuierliche Verteilung*. Deswegen hat es **keinen Sinn**, Werte in die Dichtefunktion einzusetzen, um die Wahrscheinlichkeit für *genau diesen Wert* zu erhalten. Stattdessen benutzt man die Verteilungsfunktion `cdf_normal()`.
 
   Die Dichtefunktion der Normalverteilung kann aber natürlich verwendet werden, um den Graphen – die Glockenkurve – zu zeichnen.
 
@@ -726,7 +726,7 @@ Die Maxima-Funktionen mit `cdf_...` am Anfang stehen für die *Verteilungsfunkti
 
 #### `quantile_...()` – Berechnen eines Quantils
 
-Neben `pdf_...()` und `cdf_...()` bietet Maxima noch die Funktionen mit `quantile_...()` an (und natürlich noch viel mehr Funktionen, die wir wahrscheinlich nie brauchen werden). Die `quantile_...()`-Funktion ist jeweils die Umkehrfunktion der entsprechenden Verteilungsfunktion.
+Neben `pdf_...()` und `cdf_...()` bietet Maxima noch die Funktionen mit `quantile_...()` an (und natürlich noch viel mehr Funktionen, die wir wahrscheinlich nie brauchen werden). Die `quantile_...()`-Funktion ist jeweils die Umkehrfunktion der entsprechenden Verteilungsfunktion (`cdf_...()`).
 
 Mit dieser Funktion kann man die Zahl berechnen, für die gilt, dass ein gewisser Anteil der Zufallswerte *unter oder gleich* der Zahl sind. Das bedeutet:
 
@@ -821,30 +821,178 @@ Berechnet die Varianz (&sigma;<sup>2</sup>) von Werten in einer Liste. Die Varia
 
 #### `matrix()` – Erstellen einer Matrix
 
+Erstellt ein Matrix-Objekt mit den übergebenen Elementen.
+
+Auch Vektoren können mit `matrix()` erstellt werden – sie sind nichts Anderes als Matrizen mit einer Spalte.
+
+##### Parameter
+
+`matrix(zeile1, zeile2, ...)`
+
+- Es können beliebig viele Zeilen angegeben werden. Jede Zeile ist eine Liste mit allen Elementen, die in dieser Zeile vorkommen sollen. Alle Zeilen müssen gleich lang sein.
+
+##### Beispiel
+
+![image-20200506150427334](img/matrix.png)
+
 
 
 #### `columnvector()` – Erstellen eines Spaltenvektors
+
+Erstellt einen Spaltenvektor (also eine Matrix mit genau einer Spalte). Man kann einen Spaltenvektor auch mit `matrix()` erstellen – die Ergebnisse sind gleichwertig.
+
+Bevor diese Funktion verwendet werden kann, muss das Package `eigen` mit `load(eigen);` geladen werden.
+
+##### Parameter
+
+`columnvector(elemente)`
+
+- *elemente*: Eine Liste mit den Komponenten des Vektors.
+
+##### Beispiel
+
+![image-20200506150902463](img/columnvector.png)
 
 
 
 ### Rechnen mit Matrizen
 
+#### Multiplikation von Matrizen
+
+Matrizen werden in Maxima mit dem Operator `.` (ein ganz normaler Punkt) multipliziert.  
+**Achtung**: Der Stern (Asterisk, `*`) multipliziert **nicht** die Matrizen selbst, sondern nur ihre einzelnen Elemente!
+
+Damit Matrizen überhaupt multipliziert werden können, müssen sie zusammenpassen: Eine m&times;p-Matrix kann mit einer p&times;n-Matrix multipliziert werden. Das heißt: Die erste Matrix muss so viele Spalten haben, wie die zweite Matrix Zeilen hat. Die Multiplikation von Matrizen ist **nicht kommutativ**!
+
+##### Beispiel
+
+![image-20200911130940246](img/matrix_prod.png)
+
+Hier sieht man: Das Produkt A\*B lässt sich berechnen, aber das Produkt B\*A nicht!
+
+
+
 #### `determinant()` – Berechnen der Determinante einer Matrix
+
+Berechnet die Determinante einer quadratischen Matrix. Dazu werden die Produkte der Hauptdiagonalen addiert und davon die Produkte der Nebendiagonalen abgezogen.
+
+##### Parameter
+
+`determinant(matrix)`
+
+- *matrix*: Die Matrix, deren Determinante berechnet werden soll
+
+##### Beispiel
+
+![image-20200911124336819](img/determinant.png)
+
+Das Ergebnis hier wird berechnet als: (3&times;0,5&times;3 + 4&times;1&times;1 + 2&times;7&times;0) - (2&times;0,5&times;1 + 3&times;1&times;0 + 4&times;7&times;3).
 
 
 
 #### `invert()` – Invertieren einer Matrix
 
+Berechnet die inverse Matrix A<sup>-1</sup>. Eine Matrix multipliziert mit ihrer inversen Matrix ergibt immer die Einheitsmatrix.
+
+Nur reguläre Matrizen – also Matrizen mit einer Determinante &ne; 0 – haben eine inverse Matrix. Matrizen, deren Determinante 0 ist, haben **keine inverse Matrix** – sie werden auch „singulär“ genannt.
+
+##### Parameter
+
+`invert(matrix)`
+
+- *matrix*: Die Matrix, die invertiert werden soll
+
+##### Beispiel
+
+![image-20200911131123123](img/invert.png)
+
 
 
 #### `transpose()` – Transponieren einer Matrix
+
+Transponiert eine Matrix. Dabei werden die Elemente getauscht, sodass der neue Spaltenindex dem alten Zeilenindex und der neue Zeilenindex dem alten Spaltenindex entspricht. Die Elemente auf der Hauptdiagonale verändern ihre Position nicht.
+
+Man kann sich das Transponieren einer Matrix auch so vorstellen, dass die Matrix einmal um 180° um die Hauptdiagonale gedreht (gekippt) wird.
+
+##### Beispiel
+
+Hier wird eine quadratische 2&times;2-Matrix transponiert:
+
+![image-20200911143749737](img/transpose1.png)
+
+…und hier eine 2&times;4-Matrix:
+
+![image-20200911143831674](img/transpose2.png)
+
+
+
+### Rechnen mit Vektoren
+
+#### Skalarprodukt
+
+Beim *Skalarprodukt* ist das Ergebnis eine Zahl (ein *Skalar*) – daher der Name. Dabei werden jeweils die entsprechenden Komponenten der beiden Vektoren multipliziert und alle diese Produkte addiert.
+
+In Maxima gibt es für das Skalarprodukt den Operator `.` (ein ganz normaler Punkt).  
+**Achtung**: Der Stern (Asterisk, `*`) berechnet **nicht** das Skalarprodukt, sondern das Kreuzprodukt!
+
+##### Beispiel
+
+![](img/vector_scalarprod.png)
+
+
+
+#### Kreuzprodukt
+
+Das Kreuzprodukt von zwei Vektoren ist keine Zahl, sondern wieder ein Vektor (es wird deswegen auch *Vektorprodukt* genannt). Im dreidimensionalen Raum steht der Ergebnisvektor im rechten Winkel auf die Fläche, die zwischen den beiden Vektoren liegt, die multipliziert wurden. Der Betrag (die Länge) des Ergebnisvektors entspricht dem Flächeninhalt dieser Fläche.
+
+In Maxima wird das Kreuzprodukt einfach mit dem normalen Multiplikations-Operator `*` berechnet.
+
+##### Beispiel
+
+![image-20200911143556897](img/vector_crossprod.png)
+
+
+
+#### Betrag (Länge) eines Vektors
+
+Es gibt in Maxima **keine** Funktion zum Berechnen der Länge eines Vektors! Die Funktion `abs()` berechnet zwar auch den Betrag, aber **nur von Zahlen, nicht von Vektoren!**
+
+Die einfachste Möglichkeit, in Maxima die Länge eines Vektors zu berechnen, ist die folgende:
+
+- Multipliziere den Vektor mit sich selbst ([**Skalar**produkt](#Skalarprodukt))
+- Ziehe die Wurzel ([`sqrt()`](#sqrt--quadratwurzel )) aus dem Ergebnis
+
+##### Beispiel
+
+![image-20200519100701270](img/vector_length.png)
 
 
 
 ## Grafische Darstellungen
 
-### `wxplot2d()` – Einfaches Zeichnen von Funktionsgraphen und Punkten
+### `wxplot2d()` – Einfaches Plotten von Funktionsgraphen und Punkten
+
+==TODO==
+
+- Funktionen angeben
+- Abschnitt auf der x- und y-Achse angeben
+- Punkte plotten (mit `discrete` und `[style, points, ...]`)
+- `[legend, ...]`
 
 
 
 ### `wxdraw2d()` – Komplexeres Zeichnen von Funktionsgraphen, Punkten, Formen und mehr
+
+==TODO==
+
+- Funktionen (`explicit`) – mit Erklärung, wie man die Funktion nur in einem bestimmten Bereich zeichnet
+- Punkte (`points`)
+- Polynome (`polynom`)
+- Bezeichnungen (`label`)
+- Farben (`color`)
+- Ausfüllen von Formen und Funktionen (z.B. für Fläche unter einer Funktion)
+- `xlabel` und `ylabel` für Achsenbeschriftungen
+- `xrange` und `yrange` für die Achsenabschnitte
+- `proportional_axes`
+- `logx` und `logy` für die logarithmische Skalierung
+- `grid`, `xtics` und `ytics`
